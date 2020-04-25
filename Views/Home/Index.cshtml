@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Find Your Restaurant</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <!-- Fontawesome for apple icons -->
+    <script src="https://kit.fontawesome.com/007aab5e0e.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+    <body>
+        <!-- javascript -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <section id="title" background="images/jay-wennington-N_Y88TWmGwA-unsplash.jpg">
+            <div class="brand">
+                <a>FindYourRestaurant</a>
+            </div>
+
+            <div class="topnav" id="myTopnav">
+                <a href="index.cshtml" class="active">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="SearchDrug">Search</a>
+                <a href="maps1.html">Maps</a>
+                <a href="aboutgroup.html">AboutUs</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+
+
+
+        </section>
+        <script>
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+        </script>
+
+
+
+        <!-- Features -->
+
+        <section id="features">
+            <h3 class="feature-h3">
+                <b>
+                    Let FindYourRestaurant Show You
+                    All the Restaurants in Town
+                </b>
+            </h3>
+            <p class="text-p">
+                There are plenty of restaurants, but none of them provide you with easy access or with appealing food photos from restaurants and restaurant menus across the country. At FindYourRestaurant, we tell you that we offer one of the best
+                restaurants on the market. We list more than 450,000 restaurants (and counting!) of the most interesting, and most popular restaurants located throughout America. Next time you ask yourself, “What are the best places to eat at near me?”
+                you’ll have your answer in no time.
+            </p>
+            <p class="text-p">
+                Our goal is to introduce you, the hungry customer, to a broad range of restaurants  in locations you may not find on your own. Our platform  simply designed to be user-friendly and easy to navigate, leading
+                you to some of the best restaurants in town. First, start by entering the location of the town ,city or zipcode in which you’re looking to dine in and BINGO! We will show you a list of
+                restaurants in seconds!
+            </p>
+
+
+
+        </section>
+
+
+    </body>
+
+</html>
+
