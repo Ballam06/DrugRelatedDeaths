@@ -9,7 +9,7 @@ namespace FindYourRestaurant.Models
     public class SearchModel
     {
         public List<SelectListItem> DrugDetails { get; set; }
-        public int[] DrugIds { get; set; }
+        public string[] DrugIds { get; set; }
     }
 }
-}
+

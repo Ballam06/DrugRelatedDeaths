@@ -16,13 +16,13 @@ using Microsoft.EntityFrameworkCore;
 using FindYourRestaurant.DataAccess;
 using Microsoft.Extensions.Options;
 using DocumentFormat.OpenXml.Bibliography;
+using Microsoft.CodeAnalysis.Operations;
 
 namespace FindYourRestaurant.Controllers
 {
     public class HomeController : Controller
     {
-        string MainObject;
-        string Drugs;
+        
         public ApplicationDbContext dbContext;
         private readonly AppSettings _appSettings;
         public HomeController(ApplicationDbContext context, IOptions<AppSettings> appSettings)
@@ -48,23 +48,28 @@ namespace FindYourRestaurant.Controllers
            
             dbContext.Drug.RemoveRange(dbContext.Drug);
             dbContext.SaveChanges();
+
              // ClearTables(Drugs);
             foreach (Drug item in Drug1)
-            {
+            {   
+               
+                
                 dbContext.Drug.Add(item);
             }
+            //dbContext.SaveChanges();
             foreach ( MainObject.Drug_Info item in mainObj)
             {
                 Console.WriteLine(item);
                 dbContext.MainObject.Add(item);
             }
-            
-            
-            dbContext.MainObject.RemoveRange(dbContext.MainObject);
             dbContext.SaveChanges();
+            var l1 = new List<ReportViewModel>();
+
+
+
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();

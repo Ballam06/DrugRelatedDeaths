@@ -19,9 +19,12 @@ namespace FindYourRestaurant
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+           // Configuration1 = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
         }
 
         public IConfiguration Configuration { get; }
+       // public IConfiguration Configuration1 { get; }
+        public string ConnectionString;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -29,6 +32,7 @@ namespace FindYourRestaurant
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(
                    Configuration["Data:DrugOverdose:ConnectionString"]));
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -39,10 +43,12 @@ namespace FindYourRestaurant
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
+     
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+          //  ConnectionString = Configuration1["Data: DrugOverdose:ConnectionString"];
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FindYourRestaurant.Models.MainObject.Drug_Info>
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @using (Html.BeginForm("Index", "Data", FormMethod.Get))
+    {
+    <p>
+        Type Attributes To Search: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)<br />
+        Cause @Html.DropDownList("Drug_type", ViewBag.Emp_Dept as List<SelectListItem>,"all")
+        <input type="submit" value="Search" />
+    </p>}
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionofInjury)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidenceCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidenceCounty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionofInjury)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResidenceCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResidenceCounty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+
+    </table>

@@ -1,71 +1,133 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Office.CustomUI;
+using FindYourRestaurant.API;
 using FindYourRestaurant.DataAccess;
 using FindYourRestaurant.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace FindYourRestaurant.Controllers
 {
+   
     public class DataController : Controller
     {
-        public ActionResult Index()
+        public ApplicationDbContext dbContext;
+       
+        private readonly AppSettings _appSettings;
+        public DataController(ApplicationDbContext context, IOptions<AppSettings> appSettings)
         {
-            SearchModel search = new SearchModel();
-            search.DrugDetails = PopulateDrugDetails();
-            return View(search);
+            dbContext = context;
+            _appSettings = appSettings.Value;
         }
-
-        [HttpPost]
-        public ActionResult Index(SearchModel search)
+        [HttpGet]
+        public ActionResult Index(string Search_Data, string Drug_type)
         {
-            search.DrugDetails = PopulateDrugDetails();
-            if (search.DrugIds != null)
-            {
-                List<SelectListItem> selectedItems = search.DrugDetails.Where(p => search.DrugIds.Contains(int.Parse(p.Value))).ToList();
+            var DrugList = new List<string>();
+            var DrugQuery = from t1 in dbContext.MainObject
+                             select t1.DescriptionofInjury;
+            DrugList.AddRange(DrugQuery.Distinct());
+                            
 
-                ViewBag.Message = "Selected Drugs:";
-                foreach (var selectedItem in selectedItems)
-                {
-                    selectedItem.Selected = true;
-                    ViewBag.Message += "\\n" + selectedItem.Text;
-                }
+
+
+
+            ViewBag.Drug_type = new SelectList(DrugList);
+
+            IList<MainObject.Drug_Info> drug_Infos = new List<MainObject.Drug_Info>();
+            var emp = from q in dbContext.MainObject
+                      select q;
+
+            if (!String.IsNullOrEmpty(Search_Data))
+            {
+                emp = emp.Where(s => s.ResidenceCity.Contains(Search_Data));
             }
 
-            return View(search);
-        }
-
-        private static List<SelectListItem> PopulateDrugDetails()
-        {
-            List<SelectListItem> items = new List<SelectListItem>();
-            string constr = ConfigurationManager.ConnectionStrings["Data Source=DESKTOP-BMVVDK6\\SQLEXPRESS;Initial Catalog=Example;Integrated Security=True"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            if (!String.IsNullOrEmpty(Drug_type))
             {
-                string query = " SELECT ";
-                using (SqlCommand cmd = new SqlCommand(query))
-                {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            items.Add(new SelectListItem
-                            {
-                                Text = sdr["ID"].ToString(),
-                                Value = sdr["ID","Sex"].ToString()
-                            });
-                        }
-                    }
-                    con.Close();
-                }
+                emp = emp.Where(s => s.DescriptionofInjury == Drug_type);
             }
 
-            return items;
+            var myDrugList = emp.ToList();
+
+            foreach (var empData in myDrugList)
+            {
+                drug_Infos.Add(new MainObject.Drug_Info()
+                {
+                    ID = empData.ID,
+                    Sex = empData.Sex,
+                    ResidenceCity = empData.ResidenceCity,
+                    ResidenceCounty = empData.ResidenceCounty,
+                    Race = empData.Race,
+                    DescriptionofInjury = empData.DescriptionofInjury,
+                    Date = empData.Date,
+                    Age = empData.Age
+                });
+            }
+            return View(drug_Infos);
         }
-    }
-}
+    
+
+
+public IActionResult Bar()
+        {
+            int x = 0;
+            int y = 0;
+            int z = 0;
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            APIHandler webHandler = new APIHandler();
+            List<Drug> Drug1 = webHandler.GetObject1();
+            foreach(Drug item in Drug1)
+            { 
+                if (item.Cocaine == "Y")
+                {
+                    x = x + 1;
+                }
+                if (item.Ethanol == "Y")
+                {
+                    y = y + 1;
+                }
+                if (item.Amphet == "Y")
+                {
+                    z = z + 1;
+                }
+                if (item.FentanylAnalogue == "Y")
+                {
+                    a = a + 1; 
+                }
+                if (item.Fentanyl == "Y")
+                {
+                    b = b + 1;
+                }
+
+                if (item.Tramad == "Y")
+                {
+                    c = c + 1;
+                }
+            }
+            var lstmodel = new List<ReportViewModel>();
+            lstmodel.Add(new ReportViewModel { DimensionOne = "Cocaine", Quantity = x });
+
+
+            lstmodel.Add(new ReportViewModel { DimensionOne = "Ethanol", Quantity = y });
+            lstmodel.Add(new ReportViewModel { DimensionOne = "Amphet", Quantity = z });
+            lstmodel.Add(new ReportViewModel { DimensionOne = "Fentanyl", Quantity = b });
+            lstmodel.Add(new ReportViewModel { DimensionOne = "Tramad", Quantity = c });
+            lstmodel.Add(new ReportViewModel { DimensionOne = "FentanylAnalogue", Quantity = a });
+            return View(lstmodel);
+        }
+            }
+
+            
+        }
+    

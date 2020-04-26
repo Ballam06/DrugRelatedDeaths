@@ -25,8 +25,10 @@ namespace FindYourRestaurant.Models
            // public string DeathType { get; set; }
             public DateTime Date { get; set; }
             public int Age { get; set; }
-           // [NotMapped]
-           // public IEnumerable<Drug> Drugs { get; set; }
+            
+            public string DescriptionofInjury { get; set; }
+            // [NotMapped]
+            // public IEnumerable<Drug> Drugs { get; set; }
         }
    
 

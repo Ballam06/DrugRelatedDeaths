@@ -13,5 +13,6 @@ namespace FindYourRestaurant.DataAccess
 
         public DbSet<Drug> Drug { get; set; }
         public DbSet<MainObject.Drug_Info> MainObject { get; set; }
+       
     }
 }
