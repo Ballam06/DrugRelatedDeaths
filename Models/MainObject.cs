@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace FindYourRestaurant.Models
+namespace DrugRelatedDeaths.Models
 {
 
 
@@ -15,6 +15,7 @@ namespace FindYourRestaurant.Models
         public class Drug_Info
         {
             [Key]
+            
             public string ID { get; set; }
             public string Sex { get; set; }
             public string ResidenceCity { get; set; }
@@ -27,8 +28,8 @@ namespace FindYourRestaurant.Models
             public int Age { get; set; }
             
             public string DescriptionofInjury { get; set; }
-            // [NotMapped]
-            // public IEnumerable<Drug> Drugs { get; set; }
+            [NotMapped]
+            public IEnumerable<Drug> Drugs { get; set; }
         }
    
 

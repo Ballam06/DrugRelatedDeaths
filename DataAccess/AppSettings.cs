@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FindYourRestaurant.DataAccess
+namespace DrugRelatedDeaths.DataAccess
 {
     public class AppSettings
     {

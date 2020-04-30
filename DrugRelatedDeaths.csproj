@@ -10,12 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\search.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Home\search.cshtml" />
-    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\css\styles1.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,9 +18,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Home\css\" />
   </ItemGroup>
 
 

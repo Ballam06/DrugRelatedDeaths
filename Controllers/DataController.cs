@@ -5,9 +5,9 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Office.CustomUI;
-using FindYourRestaurant.API;
-using FindYourRestaurant.DataAccess;
-using FindYourRestaurant.Models;
+using DrugRelatedDeaths.API;
+using DrugRelatedDeaths.DataAccess;
+using DrugRelatedDeaths.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace FindYourRestaurant.Controllers
+namespace DrugRelatedDeaths.Controllers
 {
    
     public class DataController : Controller

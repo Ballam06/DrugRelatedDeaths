@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FindYourRestaurant.Models
+namespace DrugRelatedDeaths.Models
 {
     public class Drug
     {
@@ -23,5 +23,6 @@ namespace FindYourRestaurant.Models
         public string Methadone { get; set; }
         public string Amphet { get; set; }
         public string Tramad { get; set; }
+        
     }
 }

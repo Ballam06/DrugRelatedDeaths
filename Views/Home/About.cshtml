@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Drug Related Accidents</title>
+    <link rel="stylesheet" href="~/css/styles1.css">
+    <!-- Fontawesome for apple icons -->
+    <script src="https://kit.fontawesome.com/007aab5e0e.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <section id="title-aboutgroup" background="images/jay-wennington-N_Y88TWmGwA-unsplash.jpg">
+        <div class="brand">
+            <a>Drug Related Accidents</a>
+        </div>
+
+        <div class="topnav" id="myTopnav">
+            <a asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
+            <a asp-area="" asp-controller="Data" asp-action="Index"> Drug Related Accidents</a>
+            <a asp-area="" asp-controller="Data" asp-action="Bar"> Statistics</a>
+            <a asp-area="" asp-controller="Home" asp-action="About">AboutUs</a>
+            <a asp-area="" asp-controller="Home" asp-action="Refresh">Refresh</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }</script>
+
+    </section>
+
+
+    <!--About us -->
+    <section id="Group5">
+        <div class="Intro">
+            <h3>
+                We are group 5 of Distributed Information Systems of Spring 2020 at University of South Florida.The assignment is intended to help us learn html,css and js.Please find our contact details and contribution to project
+                We developed a serach engine to find the restaurants near the user where the user can find the location
+            </h3>
+        </div>
+        <div class="member-details">
+
+            <div class="w3-row-padding">
+                <div class="member w3-third">
+                    <img class="image" src="~/images/Anu.jpg">
+                    <b> <h3 class="names">Anu Kambalapally</h3></b>
+                    <p>
+                        Currently a student at USF's Business Analytics and Information Systems graduate program,
+                        She designed the home page,Maps AboutUs page and also gave the template(basic design) of website.Her knowledge
+                        of html and css made us create this website with ease.
+                        <a href="https://github.com/anuyadav2494">Gitlink</a>
+                    </p>
+                </div>
+                <div class="member w3-third">
+                    <img class="image" src="~/images/Pranali.jpg">
+                    <h3 class="names" align="center">Pranali Kanade</h3>
+                    <p align="justify">
+                        Currently a student at USF's Business Analytics and Information Systems graduate program,
+                        She did the research on the data and came up with this idea to develop this website.She also designed logical
+                        database model.
+                    </p>
+                </div>
+                <div class="member w3-third">
+                    <img class="image" src="~/images/Ballam.jpg">
+                    <h3 class="names" align="center">Ballam Bikash</h3>
+                    <p align="justify">
+                        Currently a student at USF's Business Analytics and Information Systems graduate program,
+                        He helped the team when ever struck with code and errors and developed the search page.
+                        His insights helped us a lot for this project.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </section>
+    <section id="database">
+        <h2 align="center">
+            The following is the data model for our website
+        </h2>
+        <img class="image" src="~/images/ER.jpeg">
+    </section>
+
+
+
+
+
+</body>
+
+</html>

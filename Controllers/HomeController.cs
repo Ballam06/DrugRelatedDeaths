@@ -5,20 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FindYourRestaurant.Models;
-
-using FindYourRestaurant.API;
+using DrugRelatedDeaths.Models;
+using DrugRelatedDeaths.API;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System.Collections;
-using DocumentFormat.OpenXml.Office.CustomUI;
 using Microsoft.EntityFrameworkCore;
-using FindYourRestaurant.DataAccess;
+using DrugRelatedDeaths.DataAccess;
 using Microsoft.Extensions.Options;
-using DocumentFormat.OpenXml.Bibliography;
-using Microsoft.CodeAnalysis.Operations;
 
-namespace FindYourRestaurant.Controllers
+
+namespace DrugRelatedDeaths.Controllers
 {
     public class HomeController : Controller
     {
@@ -33,10 +30,16 @@ namespace FindYourRestaurant.Controllers
        
         private readonly ILogger<HomeController> _logger;
 
-      
-
         public IActionResult Index()
         {
+
+            return View();
+        }
+
+        public IActionResult Refresh()
+        {
+
+           
             APIHandler webHandler = new APIHandler();
             List<Drug> Drug1 = webHandler.GetObject1();
 
@@ -63,14 +66,95 @@ namespace FindYourRestaurant.Controllers
                 dbContext.MainObject.Add(item);
             }
             dbContext.SaveChanges();
-            var l1 = new List<ReportViewModel>();
+            var l1= new List<ReportViewModel>();
+           var l2= new List<MainObject.Drug_Info>();
+            int x = 0;
+            foreach (MainObject.Drug_Info item1 in mainObj)
+            {
+                if (x < 20)
+                {
+                    l2.Add(item1);
+                }
+                else
+                {
+                    break;
+                }
+                x = x + 1;
+            }
 
+
+            return View(l2);
+        }
+      
+        public IActionResult Index1()
+        {
 
 
             return View();
         }
-        
-        public IActionResult Privacy()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index1(MainObject.Drug_Info uc)
+        {
+            if (uc.ID == null)
+            {
+                ViewBag.message = "Please enter Id";
+            }
+            else
+            {
+                
+
+                dbContext.MainObject.Add(uc);
+                dbContext.SaveChanges();
+                ViewBag.message = "The User" + uc.ID + "saved";
+            }
+            return View();
+
+            
+        }
+        [Route("delete")]
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View("Delete");
+        }
+
+        [Route("delete")]
+        [HttpPost]
+        public IActionResult Delete(string id)
+        {
+            
+            if (id==null)
+            {
+                ViewBag.message = "Please enter id";
+            }
+            else
+            {
+                try
+                {
+                    dbContext.MainObject.Remove(dbContext.MainObject.Find(id));
+
+                    dbContext.SaveChanges();
+                    ViewBag.message = "The User" + id + "Deleted";
+                }
+                catch
+                {
+                    ViewBag.message = "No Matching ID Found";
+                }
+
+            }
+            return View();
+        }
+
+        public IActionResult About()
+
+
+        {
+            return View();
+
+        }
+            public IActionResult Privacy()
         {
             return View();
         }

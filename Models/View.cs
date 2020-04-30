@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FindYourRestaurant.Models
+namespace DrugRelatedDeaths.Models
 {
     public class View
     {

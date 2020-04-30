@@ -1,0 +1,99 @@
+﻿
+
+
+
+
+@{
+    Layout = null;
+}
+
+@model MainObject.Drug_Info;
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Drug Related Accidents</title>
+    <link rel="stylesheet" href="~/css/styles1.css">
+    <!-- Fontawesome for apple icons -->
+    <script src="https://kit.fontawesome.com/007aab5e0e.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <section id="title-aboutgroup" background="images/jay-wennington-N_Y88TWmGwA-unsplash.jpg">
+        <div class="brand">
+            <a>Drug Related Accidents</a>
+        </div>
+
+        <div class="topnav" id="myTopnav">
+            <a asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
+            <a asp-area="" asp-controller="Data" asp-action="Index"> Drug Related Accidents</a>
+            <a asp-area="" asp-controller="Data" asp-action="Bar"> Statistics</a>
+            <a asp-area="" asp-controller="Home" asp-action="About">AboutUs</a>
+            <a asp-area="" asp-controller="Home" asp-action="Refresh">Refresh</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }</script>
+
+    </section>
+
+
+    <h3>Drug Info</h3>
+    <form method="post" asp-controller="home" asp-action="delete">
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+                <td>Id</td>
+                <td>
+                    <input type="text" asp-for="ID" />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Delete" style="background:Aqua" /><a asp-controller="Data" asp-action="Index">
+    <input type='button' value='Back to Search' style="background:Aqua" />
+</a>
+                </td>
+            </tr>
+            <b>@ViewBag.message</b>
+        </table>
+    </form>
+
+
+
+
+
+</body>
+
+</html>
+
+
+

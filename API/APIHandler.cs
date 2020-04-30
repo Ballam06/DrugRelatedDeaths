@@ -4,18 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
-using FindYourRestaurant.Models;
-using System.Xml;
-using System.Xml.Linq;
-using DocumentFormat.OpenXml.Office.CustomUI;
+using DrugRelatedDeaths.Models;
 using System.Collections;
 using Newtonsoft.Json.Linq;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Formatting = Newtonsoft.Json.Formatting;
 using System.Net;
 using System.IO;
 
-namespace FindYourRestaurant.API
+namespace DrugRelatedDeaths.API
 {
 
 
@@ -64,7 +60,7 @@ namespace FindYourRestaurant.API
                     if (!foodChart.Equals(""))
                     {
                     
-                    
+
                     mainObject = JsonConvert.DeserializeObject<JArray>(foodChart).ToObject<List<MainObject.Drug_Info>>();
                     // mainObject =  collection.Cast<MainObject>().ToList();
 
